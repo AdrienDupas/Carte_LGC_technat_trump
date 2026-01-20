@@ -1,0 +1,19 @@
+{
+"type": "FeatureCollection",
+"name": "bases_militaire_technat",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null, "NAME_CITY": "de Guantánamo" }, "geometry": { "type": "Point", "coordinates": [ -75.155393493002379, 19.925263027674777 ] } },
+{ "type": "Feature", "properties": { "id": 1, "NAME_CITY": "de l'Atoll de Midway" }, "geometry": { "type": "Point", "coordinates": [ -177.376920155440132, 28.204759167681473 ] } },
+{ "type": "Feature", "properties": { "id": 2, "NAME_CITY": "des Bermudes" }, "geometry": { "type": "Point", "coordinates": [ -64.78157535789579, 32.295311560175996 ] } },
+{ "type": "Feature", "properties": { "id": 3, "NAME_CITY": "du Canal de Panama" }, "geometry": { "type": "Point", "coordinates": [ -79.881596605319231, 9.338733870887605 ] } },
+{ "type": "Feature", "properties": { "id": 4, "NAME_CITY": "du Cap Farewell" }, "geometry": { "type": "Point", "coordinates": [ -44.12874636229656, 59.863278693400616 ] } },
+{ "type": "Feature", "properties": { "id": 5, "NAME_CITY": "d'Honolulu" }, "geometry": { "type": "Point", "coordinates": [ -157.899727754147392, 21.290715045473178 ] } },
+{ "type": "Feature", "properties": { "id": 6, "NAME_CITY": "de l'île d’Attu" }, "geometry": { "type": "Point", "coordinates": [ -179.807012474615988, 51.410903034790714 ] } },
+{ "type": "Feature", "properties": { "id": 7, "NAME_CITY": "des Îles Galápagos" }, "geometry": { "type": "Point", "coordinates": [ -91.431554950220686, -0.069068631441334 ] } },
+{ "type": "Feature", "properties": { "id": 8, "NAME_CITY": "de Saint Johns" }, "geometry": { "type": "Point", "coordinates": [ -52.705745626268182, 47.568335608423787 ] } },
+{ "type": "Feature", "properties": { "id": 9, "NAME_CITY": "des Samoa américaines" }, "geometry": { "type": "Point", "coordinates": [ -170.708821709795529, -14.291202863580356 ] } },
+{ "type": "Feature", "properties": { "id": 10, "NAME_CITY": "de San Francisco" }, "geometry": { "type": "Point", "coordinates": [ -122.428655902888067, 37.774418379037073 ] } },
+{ "type": "Feature", "properties": { "id": 11, "NAME_CITY": "de Seattle" }, "geometry": { "type": "Point", "coordinates": [ -122.352792489720969, 47.577807454704399 ] } }
+]
+}
