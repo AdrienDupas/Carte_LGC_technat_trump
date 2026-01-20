@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Box } from '@mui/material'
 import * as d3 from 'd3'
-// @ts-ignore: No type definitions for 'd3-geo-projection'
+// @ts-ignore
 import { geoGinzburg9 } from 'd3-geo-projection'
 import Legend from './Legend'
 
