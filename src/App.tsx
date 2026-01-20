@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Box } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import * as d3 from 'd3'
 // @ts-ignore
 import { geoGinzburg9 } from 'd3-geo-projection'
@@ -653,7 +653,7 @@ function App() {
           const canalCoords = projection(canalCentroid)
           if (canalCoords) {
             // Décaler le label en bas du canal
-            const labelOffsetY = 35; // valeur positive pour aller vers le bas
+            const labelOffsetY = 45; // valeur positive pour aller vers le bas
             // Dessiner le trait du canal vers le label en bas
             svg.append('g')
               .attr('class', 'canal-panama-line')
@@ -845,6 +845,17 @@ function App() {
     setShowStartPrompt(true)
   }, [])
 
+  // Fonction pour revenir à l'étape précédente
+  const handleBack = () => {
+    if (showTrumpGolf) {
+      setShowTrumpGolf(false)
+      setTrumpGolfAnimated(false)
+    } else if (showTechnat) {
+      setShowTechnat(false)
+      setTechnatAnimated(false)
+    }
+  }
+
   return (
     <Box 
       onClick={() => {
@@ -929,13 +940,45 @@ function App() {
               ? 'Ferdinand Fried, 1940' 
               : !showTrumpGolf 
               ? 'Howard Scott, 1940' 
-              : 'Donald Trump, 2025'
+              : 'Donald Trump, 2025-2026'
             }
           </Box>
         </Box>
       </Box>
-      <Box ref={containerRef} sx={{ width: '100%', flexGrow: 1, minHeight: 0 }}>
+      <Box ref={containerRef} sx={{ width: '100%', flexGrow: 1, minHeight: 0, position: 'relative' }}>
         <svg ref={svgRef} style={{ width: '100%', height: '100%' }} />
+        
+        {/* Bouton retour en bas à droite */}
+        {!showStartPrompt && (showTechnat || showTrumpGolf) && (
+          <Button
+            variant="contained"
+            onClick={(e) => {
+              e.stopPropagation()
+              handleBack()
+            }}
+            sx={{
+              position: 'absolute',
+              bottom: 16,
+              right: 16,
+              backgroundColor: '#ffffff',
+              color: 'black',
+              fontFamily: '"Publico Text Web Regular", serif',
+              fontSize: { xs: '10px', md: '14px' },
+              textTransform: 'none',
+              borderRadius: 5,
+              px: 2,
+              py: 1,
+              boxShadow: 3,
+              zIndex: 1000,
+              '&:hover': {
+                backgroundColor: '#DD203C',
+                color: 'white',
+              },
+            }}
+          >
+            ← Retour
+          </Button>
+        )}
       </Box>
       
       {/* Barre de progression des étapes */}
@@ -956,7 +999,7 @@ function App() {
         }} />
       </Box>
       
-      <Box sx={{ width: '100%', minHeight: { xs: '110px', md: '80px' }, flexShrink: 0 }}>
+      <Box sx={{ width: '100%', minHeight: { xs: '120px', md: '80px' }, flexShrink: 0 }}>
         <Legend showTechnat={showTechnat} showTrumpGolf={showTrumpGolf} />
       </Box>
     </Box>
