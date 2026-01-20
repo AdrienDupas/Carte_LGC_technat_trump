@@ -1,0 +1,7 @@
+AddType application/javascript .js .mjs .jsx
+AddType application/javascript .ts .tsx
+
+<IfModule mod_headers.c>
+  Header set Content-Security-Policy "frame-ancestors *"
+  Header set X-Frame-Options "ALLOWALL"
+</IfModule>
