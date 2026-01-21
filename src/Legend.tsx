@@ -55,27 +55,6 @@ function Legend({ showTechnat, showTrumpGolf }: LegendProps) {
       </Box>
     </Box>,
     <Box 
-      key="aire-eco"
-      sx={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: 0.8,
-        transition: 'opacity 0.6s ease-in-out',
-        opacity: 1
-      }}
-    >
-      <Box sx={{ 
-        width: { xs: 28, md: 36 }, 
-        height: { xs: 6, md: 8 }, 
-        borderTop: '2px solid #df5757',
-        backgroundColor: 'transparent',
-        flexShrink: 0
-      }} />
-      <Box sx={{ fontSize: { xs: 11, md: 14 }, opacity: 1 }}>
-        Quatre aires économiques
-      </Box>
-    </Box>,
-    <Box 
       key="pays"
       sx={{ 
         display: 'flex', 
@@ -94,6 +73,27 @@ function Legend({ showTechnat, showTrumpGolf }: LegendProps) {
       }} />
       <Box sx={{ fontSize: { xs: 11, md: 14 }, opacity: 1 }}>
         Régions périphériques
+      </Box>
+    </Box>,
+    <Box 
+      key="aire-eco"
+      sx={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        gap: 0.8,
+        transition: 'opacity 0.6s ease-in-out',
+        opacity: 1
+      }}
+    >
+      <Box sx={{ 
+        width: { xs: 28, md: 36 }, 
+        height: { xs: 6, md: 8 }, 
+        borderTop: '2px solid #df5757',
+        backgroundColor: 'transparent',
+        flexShrink: 0
+      }} />
+      <Box sx={{ fontSize: { xs: 11, md: 14 }, opacity: 1 }}>
+        Quatre aires économiques
       </Box>
     </Box>,
     <Box 
@@ -299,7 +299,7 @@ function Legend({ showTechnat, showTrumpGolf }: LegendProps) {
         flexShrink: 0
       }} />
       <Box sx={{ fontSize: { xs: 11, md: 14 }, opacity: 1 }}>
-        Revendications territoriales des États-Unis
+        Revendications de Donald Trump
       </Box>
     </Box>,
     <Box 
@@ -342,9 +342,18 @@ function Legend({ showTechnat, showTrumpGolf }: LegendProps) {
         flexShrink: 0
       }} />
       <Box sx={{ fontSize: { xs: 11, md: 14 }, opacity: 1 }}>
-        Bases militaires américaines actuelles
+        Bases militaires états-uniennes actuelles
       </Box>
     </Box>,
+    <Box 
+      key="separator-1"
+      sx={{ 
+        width: { xs: '1px', md: '1.5px' },
+        height: { xs: '20px', md: '24px' },
+        backgroundColor: '#4b4b4b',
+        flexShrink: 0
+      }}
+    />,
     <Box 
       key="technat-pale"
       sx={{ 
@@ -433,6 +442,39 @@ function Legend({ showTechnat, showTrumpGolf }: LegendProps) {
       <Box sx={{ fontSize: { xs: 11, md: 14 }, opacity: 1 }}>
         Frontières du Technat
       </Box>
+    </Box>,
+    <Box 
+      key="separator-2"
+      sx={{ 
+         
+        width: { xs: '1px', md: '1.5px' },
+        height: { xs: '20px', md: '24px' },
+        backgroundColor: '#4b4b4b',
+        flexShrink: 0
+        
+      }}
+    />,
+    <Box 
+      key="aire-eco-pale"
+      sx={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        gap: 0.8,
+        transition: 'opacity 0.6s ease-in-out',
+        opacity: 1
+      }}
+    >
+      <Box sx={{ 
+        width: { xs: 28, md: 36 }, 
+        height: { xs: 6, md: 8 }, 
+        borderTop: '2px solid #e23434',
+        backgroundColor: 'transparent',
+        opacity: 0.3,
+        flexShrink: 0
+      }} />
+      <Box sx={{ fontSize: { xs: 11, md: 14 }, opacity: 1 }}>
+        Aires économiques de Fried
+      </Box>
     </Box>
   ]
 
@@ -488,11 +530,11 @@ function Legend({ showTechnat, showTrumpGolf }: LegendProps) {
           position: 'absolute',
           display: 'flex',
           alignItems: 'center',
-          gap: { xs: 1.5, md: 3 },
+          gap: { xs: 0.7, md: 2 },
           flexWrap: 'wrap',
           justifyContent: 'center',
           width: 'calc(100% - 32px)',
-          px: { xs: 0.5, md: 1 }
+          px: { xs: 0.2, md: 1 }
         }}>
           {step3Items}
         </Box>

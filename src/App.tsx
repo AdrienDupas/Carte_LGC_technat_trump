@@ -292,7 +292,7 @@ function App() {
             d.properties.NAME === 'Canal de Panama' ? '#DD203C' : 'none'
           )
           .attr('stroke-width', d => 
-            d.properties.NAME === 'Canal de Panama' ? 15 : 0
+            d.properties.NAME === 'Canal de Panama' ? 10 : 0
           )
 
         const venezuela = svg.append('g').style('opacity', trumpGolfAnimated ? 1 : 0)
@@ -431,6 +431,30 @@ function App() {
             .duration(600)
             .style('opacity', 1)
         }
+      }
+
+      // ======================
+      // AIRE ECO PALE (uniquement étape 3) - AU-DESSUS DES FRONTIÈRES
+      // ======================
+      if (showTrumpGolf && aireEcoData) {
+        const aireEcoGroupPale = svg.append('g')
+          .attr('class', 'aire-eco-pale')
+          .style('opacity', 0)
+        aireEcoGroupPale
+          .selectAll('path')
+          .data(aireEcoData.features)
+          .join('path')
+          .attr('d', path as any)
+          .attr('fill', 'none')
+          .attr('stroke', '#e23434')
+          .attr('stroke-width', 1.5)
+          .attr('pointer-events', 'none')
+        
+        // Animation progressive synchronisée avec les autres éléments de l'étape 3
+        aireEcoGroupPale.transition()
+          .delay(trumpGolfAnimated ? 0 : 600)
+          .duration(700)
+          .style('opacity', 0.3)
       }
 
       // ======================
@@ -670,7 +694,7 @@ function App() {
             labelGroup.append('text')
               .attr('x', canalCoords[0])
               .attr('y', canalCoords[1] + labelOffsetY)
-              .text('Canal du Panama')
+              .text('Canal de Panama')
               .attr('font-family', '"Publico Text Web Regular", serif')
               .attr('font-size', labelFontSize)
               .attr('fill', 'none')
@@ -684,7 +708,7 @@ function App() {
             labelGroup.append('text')
               .attr('x', canalCoords[0])
               .attr('y', canalCoords[1] + labelOffsetY)
-              .text('Canal du Panama')
+              .text('Canal de Panama')
               .attr('font-family', '"Publico Text Web Regular", serif')
               .attr('font-size', labelFontSize)
               .attr('fill', '#DD203C')
@@ -805,8 +829,9 @@ function App() {
               .attr('x', coords[0])
               .attr('y', coords[1] + i * (oceanFontSize + 2))
               .attr('text-anchor', 'start')
-              .attr('font-family', '"Publico Text Web Regular", serif')
+              .attr('font-family', '"Open Sans", sans-serif')
               .attr('font-size', oceanFontSize)
+              .attr('font-weight', 300)
               .attr('font-style', 'italic')
               .attr('fill', 'none')
               .attr('stroke', '#ffffff')
@@ -823,8 +848,9 @@ function App() {
               .attr('x', coords[0])
               .attr('y', coords[1] + i * (oceanFontSize + 2))
               .attr('text-anchor', 'start')
-              .attr('font-family', '"Publico Text Web Regular", serif')
+              .attr('font-family', '"Open Sans", sans-serif')
               .attr('font-size', oceanFontSize)
+              .attr('font-weight', 300)
               .attr('font-style', 'italic')
               .attr('fill', '#999999')
               .attr('opacity', 0.7)
@@ -954,36 +980,6 @@ function App() {
         cursor: showStartPrompt ? 'pointer' : 'default'
       }}
     >
-      {/* Prompt de démarrage avec effet respirant */}
-      {showStartPrompt && (
-        <Box
-          sx={{
-            position: 'fixed',
-            bottom: '50%',
-            left: '50%',
-            transform: 'translate(-50%, 50%)',
-            bgcolor: 'rgba(255,255,255,0.95)',
-            px: 3,
-            py: 1.5,
-            borderRadius: 10,
-            boxShadow: 3,
-            fontSize: '13px',
-            color: '#1b1b1b !important',
-            fontFamily: '"Publico Text Web Regular", serif',
-            animation: 'pulse 1.5s ease-in-out infinite',
-            '@keyframes pulse': {
-              '0%': { opacity: 0.8 },
-              '50%': { opacity: 1 },
-              '100%': { opacity: 0.8 },
-            },
-            zIndex: 2000,
-            textAlign: 'center',
-          }}
-        >
-          Cliquez sur l'écran pour commencer l'exploration
-        </Box>
-      )}
-      
       <Box sx={{ 
         width: '100%', 
         minHeight: '7%', 
@@ -1029,6 +1025,36 @@ function App() {
       <Box ref={containerRef} sx={{ width: '100%', flexGrow: 1, minHeight: 0, position: 'relative' }}>
         <svg ref={svgRef} style={{ width: '100%', height: '100%' }} />
         
+        {/* Prompt de démarrage avec effet respirant - centré sur la carte */}
+        {showStartPrompt && (
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              bgcolor: 'rgba(255,255,255,0.95)',
+              px: 3,
+              py: 1.5,
+              borderRadius: 10,
+              boxShadow: 3,
+              fontSize: '13px',
+              color: '#1b1b1b !important',
+              fontFamily: '"Publico Text Web Regular", serif',
+              animation: 'pulse 1.5s ease-in-out infinite',
+              '@keyframes pulse': {
+                '0%': { opacity: 0.8 },
+                '50%': { opacity: 1 },
+                '100%': { opacity: 0.8 },
+              },
+              zIndex: 2000,
+              textAlign: 'center',
+            }}
+          >
+            Cliquez sur l'écran pour commencer l'exploration
+          </Box>
+        )}
+        
         {/* Source en bas au centre */}
         <Box
           sx={{
@@ -1044,9 +1070,9 @@ function App() {
           }}
         >
           Source: {!showTechnat 
-            ? 'Ferdinand Fried, Das XX. Jahrhundert, 1940' 
+            ? 'Fried Ferdinand, Das XX. Jahrhundert, 1940' 
             : !showTrumpGolf 
-            ? 'Scott Howard, 1940' 
+            ? 'Howard Scott, 1940' 
             : 'Donald Trump, X, 2025-2026'
           }
         </Box>
