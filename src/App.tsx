@@ -292,8 +292,9 @@ function App() {
             d.properties.NAME === 'Canal de Panama' ? '#DD203C' : 'none'
           )
           .attr('stroke-width', d => 
-            d.properties.NAME === 'Canal de Panama' ? 10 : 0
-          )
+            d.properties.NAME === 'Canal de Panama' ? 10 : 0)
+           .attr('stroke-linecap', 'round')
+          .attr('stroke-linejoin', 'round')
 
         const venezuela = svg.append('g').style('opacity', trumpGolfAnimated ? 1 : 0)
         venezuela.selectAll('path')
@@ -676,7 +677,7 @@ function App() {
           if (canalCoords) {
             // Décaler le label en bas du canal
             const labelOffsetY = 45; // valeur positive pour aller vers le bas
-            // Dessiner le trait du canal vers le label en bas
+            // Dessiner le trait du canal vers le label en bas avec des extrémités arrondies
             svg.append('g')
               .attr('class', 'canal-panama-line')
               .append('line')
@@ -686,6 +687,7 @@ function App() {
               .attr('y2', canalCoords[1] + labelOffsetY - 10)
               .attr('stroke', '#DD203C')
               .attr('stroke-width', 2)
+             
             // Label avec double contour blanc positionné en bas du canal
             const labelFontSize = width < 600 ? 11 : width < 900 ? 12 : 16
             const labelGroup = svg.append('g')
@@ -998,7 +1000,7 @@ function App() {
         <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
           <Box sx={{ 
             fontFamily: '"Sanomat Web Medium Regular"',
-            fontSize: { xs: '14px', md: '23px' },
+            fontSize: { xs: '14px', sm: '19px', md: '23px' },
             fontWeight: 'bold'
           }}>
             {!showTechnat 
@@ -1011,7 +1013,7 @@ function App() {
 
           <Box sx={{ 
             fontFamily: '"Publico Text Web Regular"',
-            fontSize: { xs: '12px', md: '19px' }
+            fontSize: { xs: '12px', sm: '15px', md: '19px' }
           }}>
             {!showTechnat 
               ? 'Ferdinand Fried, 1940' 
@@ -1099,6 +1101,15 @@ function App() {
               py: 1,
               boxShadow: 3,
               zIndex: 1000,
+              outline: 'none',
+              '&:focus': {
+                outline: 'none',
+                boxShadow: 3,
+              },
+              '&:focus-visible': {
+                outline: 'none',
+                boxShadow: 3,
+              },
               '&:hover': {
                 backgroundColor: '#DD203C',
                 color: 'white',
@@ -1128,7 +1139,7 @@ function App() {
         }} />
       </Box>
       
-      <Box sx={{ width: '100%', minHeight: { xs: '157px', sm : '120px',md: '100px' }, flexShrink: 0 }}>
+      <Box sx={{ width: '100%', minHeight: { xs: '157px', sm : '120px',md: '104px' }, flexShrink: 0 }}>
         <Legend showTechnat={showTechnat} showTrumpGolf={showTrumpGolf} />
       </Box>
     </Box>
